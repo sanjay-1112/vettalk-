@@ -38,13 +38,18 @@ Please help me connect for the consultation.`;
  * Returns the click-to-chat URL with encoded message
  */
 export function getWhatsAppUrl(payload: WhatsAppMessagePayload): string {
-  // Configurable clinic phone number from env or default placeholder
+  // Configurable clinic phone number from env, with Dr. R. Soni's number as verified default
   const rawNumber =
     process.env.NEXT_PUBLIC_WHATSAPP_PHONE_NUMBER ||
-    "919876543210"; // Configure your WhatsApp number in .env.local
+    "918919468165";
 
   // Clean the phone number (remove +, -, spaces)
-  const cleanNumber = rawNumber.replace(/[^0-9]/g, "");
+  let cleanNumber = rawNumber.replace(/[^0-9]/g, "");
+
+  // Auto-prepend India country code (91) if 10-digit number is passed (e.g. 8919468165 -> 918919468165)
+  if (cleanNumber.length === 10) {
+    cleanNumber = `91${cleanNumber}`;
+  }
 
   const message = buildWhatsAppMessage(payload);
   const encodedMessage = encodeURIComponent(message);
