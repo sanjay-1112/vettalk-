@@ -8,6 +8,7 @@ import {
 } from "@/types/consultation";
 import { StatusBadge } from "./StatusBadge";
 import { PaymentBadge } from "./PaymentBadge";
+import { formatWhatsAppPhone } from "@/lib/whatsapp";
 import {
   ExternalLink,
   MessageCircle,
@@ -146,7 +147,7 @@ export function AdminConsultationTable({
                   <td className="py-3.5 px-4">
                     <p className="font-bold text-slate-900">{item.owner_name}</p>
                     <a
-                      href={`https://wa.me/91${item.mobile_number}`}
+                      href={`https://wa.me/${formatWhatsAppPhone(item.mobile_number)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
@@ -194,7 +195,7 @@ export function AdminConsultationTable({
                   <td className="py-3.5 px-4 text-right whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
                     <div className="flex items-center justify-end gap-2">
                       <a
-                        href={`https://wa.me/91${item.mobile_number}?text=Hello%20${encodeURIComponent(
+                        href={`https://wa.me/${formatWhatsAppPhone(item.mobile_number)}?text=Hello%20${encodeURIComponent(
                           item.owner_name
                         )}%2C%20this%20is%20the%20veterinarian%20regarding%20${encodeURIComponent(
                           item.pet_name
@@ -277,7 +278,7 @@ export function AdminConsultationTable({
 
                 <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
                   <a
-                    href={`https://wa.me/91${item.mobile_number}?text=Hello%20${encodeURIComponent(
+                    href={`https://wa.me/${formatWhatsAppPhone(item.mobile_number)}?text=Hello%20${encodeURIComponent(
                       item.owner_name
                     )}%2C%20this%20is%20the%20veterinarian%20regarding%20${encodeURIComponent(
                       item.pet_name
@@ -350,7 +351,7 @@ export function AdminConsultationTable({
                     City: {selectedItem.city || "Not provided"}
                   </p>
                   <a
-                    href={`https://wa.me/91${selectedItem.mobile_number}`}
+                    href={`https://wa.me/${formatWhatsAppPhone(selectedItem.mobile_number)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-emerald-700 shadow-xs"

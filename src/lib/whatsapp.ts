@@ -35,6 +35,23 @@ Please help me connect for the consultation.`;
 }
 
 /**
+ * Formats any Indian mobile number into international WhatsApp wa.me format (91XXXXXXXXXX)
+ */
+export function formatWhatsAppPhone(phone: string): string {
+  const cleaned = phone.replace(/[^0-9]/g, "");
+  if (cleaned.startsWith("91") && cleaned.length === 12) {
+    return cleaned;
+  }
+  if (cleaned.startsWith("0") && cleaned.length === 11) {
+    return `91${cleaned.slice(1)}`;
+  }
+  if (cleaned.length === 10) {
+    return `91${cleaned}`;
+  }
+  return cleaned;
+}
+
+/**
  * Returns the click-to-chat URL with encoded message
  */
 export function getWhatsAppUrl(payload: WhatsAppMessagePayload): string {
@@ -43,13 +60,7 @@ export function getWhatsAppUrl(payload: WhatsAppMessagePayload): string {
     process.env.NEXT_PUBLIC_WHATSAPP_PHONE_NUMBER ||
     "918919468165";
 
-  // Clean the phone number (remove +, -, spaces)
-  let cleanNumber = rawNumber.replace(/[^0-9]/g, "");
-
-  // Auto-prepend India country code (91) if 10-digit number is passed (e.g. 8919468165 -> 918919468165)
-  if (cleanNumber.length === 10) {
-    cleanNumber = `91${cleanNumber}`;
-  }
+  const cleanNumber = formatWhatsAppPhone(rawNumber);
 
   const message = buildWhatsAppMessage(payload);
   const encodedMessage = encodeURIComponent(message);
