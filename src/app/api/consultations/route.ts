@@ -6,6 +6,7 @@ import {
 } from "@/lib/supabase/server";
 import { generateReferenceId } from "@/lib/reference";
 import { isAuthenticatedAdmin } from "@/lib/auth";
+import { dispatchBackendConsultationNotification } from "@/lib/notifications";
 import {
   PetType,
   PetGender,
@@ -197,6 +198,23 @@ export async function POST(req: NextRequest) {
       // Local development fallback
       devFallbackStore.insert(record);
     }
+
+    // Dispatch backend alerts to backup numbers (hidden from patient)
+    dispatchBackendConsultationNotification({
+      referenceId: record.reference_id,
+      ownerName: record.owner_name,
+      ownerPhone: record.mobile_number,
+      city: record.city,
+      petName: record.pet_name,
+      petType: record.pet_type,
+      breed: record.breed,
+      petAge: record.pet_age,
+      mainConcern: record.main_concern,
+      problemDuration: record.problem_duration,
+      photoUrl: record.photo_url,
+    }).catch((err) => {
+      console.warn("Backend notification dispatch warning:", err);
+    });
 
     return NextResponse.json({
       success: true,

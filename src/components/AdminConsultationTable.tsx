@@ -9,6 +9,7 @@ import {
 import { StatusBadge } from "./StatusBadge";
 import { PaymentBadge } from "./PaymentBadge";
 import { formatWhatsAppPhone } from "@/lib/whatsapp";
+import { getTeamAlertWhatsAppUrl } from "@/lib/notifications";
 import {
   ExternalLink,
   MessageCircle,
@@ -23,6 +24,7 @@ import {
   Loader2,
   Tag,
   CheckCircle,
+  BellRing,
 } from "lucide-react";
 
 interface AdminConsultationTableProps {
@@ -417,6 +419,83 @@ export function AdminConsultationTable({
                     </a>
                   </div>
                 )}
+              </div>
+
+              {/* Internal Team Alert & Forwarding Bar */}
+              <div className="rounded-xl border border-teal-200 bg-teal-50/70 p-4">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-xs font-bold text-teal-950 uppercase tracking-wide flex items-center gap-1.5">
+                    <BellRing className="h-4 w-4 text-teal-700" />
+                    <span>Forward Case to WhatsApp Team</span>
+                  </span>
+                  <span className="text-[10px] text-teal-800 font-bold bg-white px-2 py-0.5 rounded border border-teal-200">
+                    Never Miss a Patient
+                  </span>
+                </div>
+                <p className="text-xs text-slate-600 mb-3">
+                  Instantly forward this case file with pet details, symptoms, and owner contact to backup team members:
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <a
+                    href={getTeamAlertWhatsAppUrl("919821386262", {
+                      referenceId: selectedItem.reference_id,
+                      ownerName: selectedItem.owner_name,
+                      ownerPhone: selectedItem.mobile_number,
+                      city: selectedItem.city,
+                      petName: selectedItem.pet_name,
+                      petType: selectedItem.pet_type,
+                      breed: selectedItem.breed,
+                      petAge: selectedItem.pet_age,
+                      mainConcern: selectedItem.main_concern,
+                    })}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-white border border-teal-300 px-3 py-1.5 text-xs font-bold text-teal-900 hover:bg-teal-100 shadow-2xs"
+                  >
+                    <MessageCircle className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Alert 9821386262 (Sanjay)</span>
+                  </a>
+
+                  <a
+                    href={getTeamAlertWhatsAppUrl("918373916196", {
+                      referenceId: selectedItem.reference_id,
+                      ownerName: selectedItem.owner_name,
+                      ownerPhone: selectedItem.mobile_number,
+                      city: selectedItem.city,
+                      petName: selectedItem.pet_name,
+                      petType: selectedItem.pet_type,
+                      breed: selectedItem.breed,
+                      petAge: selectedItem.pet_age,
+                      mainConcern: selectedItem.main_concern,
+                    })}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-white border border-teal-300 px-3 py-1.5 text-xs font-bold text-teal-900 hover:bg-teal-100 shadow-2xs"
+                  >
+                    <MessageCircle className="h-3.5 w-3.5 text-emerald-600" />
+                    <span>Alert 8373916196 (Desk)</span>
+                  </a>
+
+                  <a
+                    href={getTeamAlertWhatsAppUrl("918919468165", {
+                      referenceId: selectedItem.reference_id,
+                      ownerName: selectedItem.owner_name,
+                      ownerPhone: selectedItem.mobile_number,
+                      city: selectedItem.city,
+                      petName: selectedItem.pet_name,
+                      petType: selectedItem.pet_type,
+                      breed: selectedItem.breed,
+                      petAge: selectedItem.pet_age,
+                      mainConcern: selectedItem.main_concern,
+                    })}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-teal-700 px-3 py-1.5 text-xs font-bold text-white hover:bg-teal-800 shadow-2xs"
+                  >
+                    <MessageCircle className="h-3.5 w-3.5" />
+                    <span>Alert Dr. Soni (8919468165)</span>
+                  </a>
+                </div>
               </div>
 
               {/* Status & Payment Updates */}

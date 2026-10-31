@@ -15,6 +15,8 @@ import {
   ArrowLeft,
   ShieldCheck,
   TrendingUp,
+  BellRing,
+  MessageCircle,
 } from "lucide-react";
 import {
   ConsultationRequest,
@@ -364,6 +366,40 @@ export default function AdminPage() {
             <p className="text-2xl font-black text-amber-900 mt-1">
               {pendingPaymentCount}
             </p>
+          </div>
+        </div>
+
+        {/* Team WhatsApp Channels Banner */}
+        <div className="mb-6 rounded-2xl border border-teal-200 bg-gradient-to-r from-teal-50 via-white to-emerald-50 p-4 shadow-2xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal-600 text-white shadow-2xs shrink-0">
+                <BellRing className="h-4 w-4" />
+              </div>
+              <div>
+                <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
+                  Clinic WhatsApp Alert Channels &middot; Active
+                </h3>
+                <p className="text-[11px] text-slate-600">
+                  Patient requests route directly to Dr. R. Soni, with automated backup alerts dispatched to team numbers.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 text-xs">
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1 font-semibold text-slate-800 border border-slate-200 shadow-2xs">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Primary: <strong>+91 8919468165</strong></span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1 font-medium text-slate-700 border border-slate-200 shadow-2xs">
+                <span className="h-2 w-2 rounded-full bg-teal-500" />
+                <span>Backup 1: <strong>+91 9821386262</strong></span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1 font-medium text-slate-700 border border-slate-200 shadow-2xs">
+                <span className="h-2 w-2 rounded-full bg-teal-500" />
+                <span>Backup 2: <strong>+91 8373916196</strong></span>
+              </span>
+            </div>
           </div>
         </div>
 
