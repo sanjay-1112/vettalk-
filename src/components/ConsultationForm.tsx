@@ -20,6 +20,7 @@ import {
   PetGender,
   ProblemDuration,
 } from "@/types/consultation";
+import { trackMetaLead } from "@/components/MetaPixel";
 
 interface ConsultationFormProps {
   initialConcern?: string;
@@ -62,12 +63,14 @@ export function ConsultationForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  // Capture UTM parameters from URL on mount
+  // Capture UTM parameters and concern pre-fill from URL on mount
   useEffect(() => {
     if (typeof window !== "undefined") {
       const searchParams = new URLSearchParams(window.location.search);
+      const concernFromUrl = searchParams.get("concern") || searchParams.get("symptom");
       setFormData((prev) => ({
         ...prev,
+        main_concern: concernFromUrl || prev.main_concern,
         utm_source: searchParams.get("utm_source") || prev.utm_source,
         utm_medium: searchParams.get("utm_medium") || prev.utm_medium,
         utm_campaign: searchParams.get("utm_campaign") || prev.utm_campaign,
@@ -195,6 +198,9 @@ export function ConsultationForm({
       if (!response.ok || !result.success) {
         throw new Error(result.error || "Failed to create consultation request. Please try again.");
       }
+
+      // Track Meta Lead event for Instagram / Facebook performance marketing
+      trackMetaLead(result.data.reference_id);
 
       onSuccess({
         referenceId: result.data.reference_id,

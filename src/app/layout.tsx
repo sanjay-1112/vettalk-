@@ -40,6 +40,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { MetaPixel } from "@/components/MetaPixel";
+
 export default function RootLayout({
   children,
 }: {
@@ -48,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} min-h-screen flex flex-col bg-slate-50 antialiased`}>
+        <MetaPixel />
         {children}
       </body>
     </html>
