@@ -33,9 +33,10 @@ export function Header() {
           </div>
           <a
             href="#consult-form"
-            className="rounded-lg bg-teal-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-teal-700 transition-colors"
+            className="rounded-lg bg-red-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-md shadow-red-600/30 hover:bg-red-700 active:scale-95 transition-all flex items-center gap-1.5 ring-2 ring-red-500/20"
           >
-            Consult Vet
+            <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+            <span>Consult Vet</span>
           </a>
         </div>
       </div>

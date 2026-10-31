@@ -49,32 +49,32 @@ export default function HomePage() {
         ) : (
           <>
             {/* HERO TITLE BANNER */}
-            <section className="bg-gradient-to-b from-teal-50/90 via-teal-50/40 to-slate-50 pt-6 pb-4 px-4 sm:px-6">
+            <section className="bg-gradient-to-b from-teal-50/90 via-teal-50/30 to-slate-50 pt-4 pb-2 px-4 sm:px-6">
               <div className="mx-auto max-w-4xl text-center">
                 {/* Value Pill */}
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-teal-100/90 px-3.5 py-1 text-xs font-semibold text-teal-900 border border-teal-200/80 shadow-2xs mb-2.5">
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-teal-100/90 px-3 py-1 text-xs font-semibold text-teal-900 border border-teal-200/80 shadow-2xs mb-2">
                   <Sparkles className="h-3.5 w-3.5 text-teal-600" />
-                  <span>VetTalk (24*7) &middot; Starting at ₹100</span>
+                  <span>Online Vet Consultation &middot; Just ₹100 via UPI</span>
                 </div>
 
-                <h1 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl md:text-4xl leading-snug">
-                  Talk to a Vet <span className="text-teal-600">from Home</span>
+                <h1 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl md:text-4xl leading-tight">
+                  Talk to a Vet <span className="text-teal-600">from Home on WhatsApp</span>
                 </h1>
 
-                <p className="mt-1.5 text-xs sm:text-sm md:text-base text-slate-600 font-normal max-w-xl mx-auto">
-                  Get veterinary guidance for your dog or cat through WhatsApp. Consultations start at ₹100 via UPI.
+                <p className="mt-1 text-xs sm:text-sm text-slate-600 font-normal max-w-xl mx-auto">
+                  Direct guidance for dogs & cats from licensed Indian veterinarians. Fast 1-minute intake.
                 </p>
 
                 {/* Instant Trust Badges */}
-                <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-slate-600">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 border border-slate-200/80 shadow-2xs">
+                <div className="mt-2.5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-[11px] font-semibold text-slate-600">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-0.5 border border-slate-200/80 shadow-2xs">
                     <Shield className="h-3 w-3 text-teal-600" /> Licensed Indian Veterinarians
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 border border-slate-200/80 shadow-2xs">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-0.5 border border-slate-200/80 shadow-2xs">
                     <MessageCircle className="h-3 w-3 text-emerald-600" /> WhatsApp Direct
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 border border-slate-200/80 shadow-2xs">
-                    <Clock className="h-3 w-3 text-teal-600" /> 2-Min Quick Intake
+                  <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-0.5 border border-slate-200/80 shadow-2xs">
+                    <Clock className="h-3 w-3 text-teal-600" /> 1-Min Quick Intake
                   </span>
                 </div>
               </div>
