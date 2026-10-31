@@ -37,11 +37,11 @@ CREATE TABLE IF NOT EXISTS public.consultation_requests (
         consultation_status IN ('new', 'waiting', 'in_consultation', 'completed', 'cancelled')
     ),
 
-    -- Financial Status (₹100 default)
+    -- Financial Status (Flat ₹200 default)
     payment_status VARCHAR(20) NOT NULL DEFAULT 'pending' CHECK (
         payment_status IN ('pending', 'paid', 'waived')
     ),
-    consultation_amount INTEGER NOT NULL DEFAULT 100,
+    consultation_amount INTEGER NOT NULL DEFAULT 200,
 
     -- Clinical / Administration Notes
     admin_notes TEXT,

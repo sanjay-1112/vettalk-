@@ -41,7 +41,7 @@ export function Hero({ onCtaClick }: HeroProps) {
             Affordable Care:
           </span>
           <span className="text-lg sm:text-xl font-black text-emerald-600 flex items-center gap-1">
-            Consultation starting at ₹100
+            Consultation Flat ₹200 Only
           </span>
         </div>
 
@@ -56,7 +56,7 @@ export function Hero({ onCtaClick }: HeroProps) {
             <span>Consult a Vet Now</span>
           </a>
           <p className="mt-2 text-[11px] text-slate-500 font-medium">
-            No app download &middot; Pay ₹100 manually via UPI after intake
+            No app download &middot; Pay Flat ₹200 via UPI after consultation
           </p>
         </div>
 

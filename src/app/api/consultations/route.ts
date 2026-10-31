@@ -146,7 +146,7 @@ export async function POST(req: NextRequest) {
       photo_url,
       consultation_status: "new",
       payment_status: "pending",
-      consultation_amount: 100,
+      consultation_amount: 200,
       admin_notes: null,
       utm_source,
       utm_medium,

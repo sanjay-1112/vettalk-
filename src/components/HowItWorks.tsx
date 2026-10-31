@@ -30,8 +30,8 @@ export function HowItWorks() {
       num: "04",
       icon: CreditCard,
       title: "Pay consultation fee",
-      description: "Pay the ₹100 fee conveniently via any UPI app after intake.",
-      badge: "₹100 UPI",
+      description: "Pay the flat ₹200 fee conveniently via any UPI app after your consultation.",
+      badge: "Flat ₹200 UPI",
     },
   ];
 

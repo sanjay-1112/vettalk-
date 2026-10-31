@@ -1,7 +1,17 @@
 "use client";
 
-import React from "react";
-import { CheckCircle2, MessageCircle, ArrowLeft, ShieldCheck, Heart } from "lucide-react";
+import React, { useState } from "react";
+import Image from "next/image";
+import {
+  CheckCircle2,
+  ArrowLeft,
+  ShieldCheck,
+  Copy,
+  Check,
+  QrCode,
+  Smartphone,
+  ExternalLink,
+} from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { WhatsAppMessagePayload } from "@/lib/whatsapp";
 
@@ -14,45 +24,71 @@ export function ConsultationConfirmation({
   data,
   onReset,
 }: ConsultationConfirmationProps) {
+  const [copied, setCopied] = useState(false);
+  const upiId = "sanjay1112198@okicici";
+  const upiPayee = "Sanjay Soni";
+  const consultationAmount = "200";
+
+  const handleCopyUpi = () => {
+    navigator.clipboard.writeText(upiId);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
+  // Deep link for mobile UPI apps
+  const upiDeepLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(
+    upiPayee
+  )}&am=${consultationAmount}&cu=INR&tn=${encodeURIComponent(
+    `VetTalk Ref ${data.referenceId}`
+  )}`;
+
   return (
-    <div className="mx-auto max-w-xl px-4 sm:px-6 py-8">
-      <div className="rounded-2xl border border-teal-200 bg-white p-6 sm:p-8 text-center shadow-lg shadow-teal-500/5">
+    <div className="mx-auto max-w-xl px-4 sm:px-6 py-6 sm:py-8">
+      <div className="rounded-2xl border border-teal-200 bg-white p-5 sm:p-8 text-center shadow-lg shadow-teal-500/5">
         {/* Success Icon */}
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-50 text-teal-600 ring-8 ring-teal-50/50">
-          <CheckCircle2 className="h-10 w-10 text-teal-600" />
+        <div className="mx-auto flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-teal-50 text-teal-600 ring-8 ring-teal-50/50">
+          <CheckCircle2 className="h-8 w-8 sm:h-10 sm:w-10 text-teal-600" />
         </div>
 
-        <span className="mt-4 inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
+        <span className="mt-3 inline-block rounded-full bg-emerald-100 px-3 py-0.5 text-xs font-bold text-emerald-800">
           Request Logged Successfully
         </span>
 
         <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
-          Consultation Request Received
+          Case File #{data.referenceId}
         </h2>
 
-        <p className="mt-2 text-sm text-slate-600 max-w-md mx-auto">
-          We have generated your case file. Click below to continue directly to WhatsApp and begin your consultation with the on-duty veterinarian.
+        <p className="mt-1 text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
+          Your details are ready. Tap below to connect directly with Dr. R. Soni on WhatsApp.
         </p>
 
+        {/* Primary Action: Open WhatsApp */}
+        <div className="mt-5">
+          <WhatsAppButton payload={data} size="lg" />
+          <p className="mt-2 text-xs text-slate-500">
+            WhatsApp will open with your pet details and consultation reference.
+          </p>
+        </div>
+
         {/* Case Summary Card */}
-        <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50/70 p-4 text-left space-y-2.5">
+        <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50/70 p-4 text-left space-y-2 text-xs sm:text-sm">
           <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
             <span className="text-xs text-slate-500 font-medium">Consultation Reference:</span>
-            <span className="font-mono text-sm font-bold text-teal-800 bg-white px-2.5 py-0.5 rounded border border-teal-200">
+            <span className="font-mono text-xs sm:text-sm font-bold text-teal-800 bg-white px-2 py-0.5 rounded border border-teal-200">
               {data.referenceId}
             </span>
           </div>
 
           <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
-            <span className="text-xs text-slate-500 font-medium">Pet Name:</span>
-            <span className="text-sm font-bold text-slate-800">
+            <span className="text-xs text-slate-500 font-medium">Pet:</span>
+            <span className="font-bold text-slate-800">
               {data.petName} ({data.petType})
             </span>
           </div>
 
           <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
             <span className="text-xs text-slate-500 font-medium">Owner:</span>
-            <span className="text-sm font-semibold text-slate-800">
+            <span className="font-semibold text-slate-800">
               {data.ownerName}
               {data.ownerPhone ? (
                 <span className="text-xs font-normal text-slate-500 ml-1">
@@ -64,27 +100,108 @@ export function ConsultationConfirmation({
 
           <div className="flex items-center justify-between pt-1">
             <span className="text-xs text-slate-500 font-medium">Consultation Fee:</span>
-            <span className="text-base font-extrabold text-emerald-600">
-              ₹100 <span className="text-xs font-normal text-slate-500">(Payable via UPI)</span>
+            <span className="text-sm sm:text-base font-extrabold text-emerald-600">
+              Flat ₹200 <span className="text-[11px] font-normal text-slate-500">(Payable via UPI)</span>
             </span>
           </div>
         </div>
 
-        {/* WhatsApp Action Button */}
-        <div className="mt-6">
-          <WhatsAppButton payload={data} size="lg" />
-          <p className="mt-2 text-xs text-slate-500">
-            WhatsApp will open with your pre-filled consultation details.
-          </p>
-        </div>
-
-        {/* How payment works banner */}
-        <div className="mt-6 rounded-xl bg-teal-50/60 p-3.5 border border-teal-100 text-left">
-          <div className="flex items-start gap-2.5">
-            <ShieldCheck className="h-4 w-4 text-teal-700 shrink-0 mt-0.5" />
-            <div className="text-xs text-teal-900 leading-relaxed">
-              <span className="font-bold">Next Steps on WhatsApp:</span> The veterinarian will review {data.petName}&apos;s condition, recommend prompt care, and provide UPI details to settle the ₹100 fee.
+        {/* UPI QR CODE & PAYMENT SECTION */}
+        <div className="mt-6 rounded-2xl border-2 border-emerald-200 bg-gradient-to-b from-emerald-50/50 via-white to-slate-50 p-4 sm:p-5 text-left shadow-sm">
+          <div className="flex items-center justify-between border-b border-emerald-100 pb-3">
+            <div className="flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 text-white">
+                <QrCode className="h-4 w-4" />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-slate-900">
+                  UPI Payment Details &middot; Flat ₹200
+                </h3>
+                <p className="text-[11px] text-slate-500">
+                  Pay now or right after your doctor consultation
+                </p>
+              </div>
             </div>
+            <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
+              All UPI Apps
+            </span>
+          </div>
+
+          {/* QR Code and Info Flex */}
+          <div className="mt-4 flex flex-col sm:flex-row items-center gap-4">
+            {/* Real QR Code Image */}
+            <div className="shrink-0 bg-white p-2 rounded-xl border border-slate-200 shadow-sm text-center">
+              <div className="relative h-40 w-40 overflow-hidden rounded-lg">
+                <Image
+                  src="/images/upi-qr.jpg"
+                  alt="UPI QR Code - Flat ₹200"
+                  width={200}
+                  height={200}
+                  priority
+                  className="h-full w-full object-contain"
+                />
+              </div>
+              <p className="text-[10px] text-slate-400 mt-1 font-medium">
+                Scan with GPay / PhonePe / Paytm
+              </p>
+            </div>
+
+            {/* UPI ID Details & Quick Actions */}
+            <div className="flex-1 w-full space-y-2.5">
+              <div>
+                <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
+                  Official UPI ID
+                </span>
+                <div className="mt-1 flex items-center justify-between rounded-lg bg-white border border-slate-200 px-3 py-2 font-mono text-xs sm:text-sm font-bold text-slate-800 shadow-2xs">
+                  <span className="truncate">{upiId}</span>
+                  <button
+                    type="button"
+                    onClick={handleCopyUpi}
+                    className="ml-2 inline-flex items-center gap-1 rounded bg-teal-50 px-2 py-1 text-xs font-semibold text-teal-700 hover:bg-teal-100 transition-colors shrink-0"
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="h-3 w-3 text-emerald-600" />
+                        <span className="text-emerald-700">Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="h-3 w-3" />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                <div className="rounded-lg bg-white p-2 border border-slate-200/80">
+                  <span className="text-[10px] text-slate-400 block">Payee Name</span>
+                  <span className="font-semibold text-slate-800">{upiPayee}</span>
+                </div>
+                <div className="rounded-lg bg-white p-2 border border-slate-200/80">
+                  <span className="text-[10px] text-slate-400 block">Amount</span>
+                  <span className="font-extrabold text-emerald-600">Flat ₹200</span>
+                </div>
+              </div>
+
+              {/* Direct UPI App link for mobile */}
+              <a
+                href={upiDeepLink}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-3 py-2.5 text-xs font-bold text-white hover:bg-slate-800 active:scale-95 transition-all shadow-xs"
+              >
+                <Smartphone className="h-3.5 w-3.5 text-teal-300" />
+                <span>Tap to Pay ₹200 via UPI App</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Payment Guidance Note */}
+          <div className="mt-3 flex items-start gap-2 rounded-lg bg-teal-50/70 p-2.5 text-[11px] text-teal-900 border border-teal-100">
+            <ShieldCheck className="h-4 w-4 text-teal-700 shrink-0 mt-0.5" />
+            <span>
+              <strong>Payment Process:</strong> These UPI payment details are also automatically included in your WhatsApp chat message. You can complete the payment once Dr. R. Soni has answered your queries.
+            </span>
           </div>
         </div>
 

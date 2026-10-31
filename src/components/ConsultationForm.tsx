@@ -233,7 +233,7 @@ export function ConsultationForm({
             <span className="text-[10px] font-semibold text-emerald-800 uppercase tracking-wider block">
               Fee
             </span>
-            <span className="text-base font-black text-emerald-700">₹100</span>
+            <span className="text-base font-black text-emerald-700">Flat ₹200</span>
           </div>
         </div>
 
@@ -634,7 +634,7 @@ export function ConsultationForm({
           </button>
 
           <p className="text-center text-[11px] text-slate-400">
-            Consultation fee starts at ₹100 &middot; Payable via UPI after consultation
+            Consultation fee: Flat ₹200 Only &middot; Payable via UPI after consultation
           </p>
         </form>
       </div>

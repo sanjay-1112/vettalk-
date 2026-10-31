@@ -17,7 +17,7 @@ export function buildWhatsAppMessage(payload: WhatsAppMessagePayload): string {
   const ageDisplay = payload.petAge ? payload.petAge : "Not specified";
   const phoneLine = payload.ownerPhone ? `Phone: +91 ${payload.ownerPhone}\n` : "";
 
-  return `Hello,
+  return `Hello Dr. R. Soni,
 
 I would like to consult a veterinarian on VetTalk (24*7).
 
@@ -30,6 +30,12 @@ Age: ${ageDisplay}
 
 Concern:
 ${payload.mainConcern.trim()}
+
+---
+💳 Consultation Fee: Flat ₹200 Only
+📲 UPI ID: sanjay1112198@okicici (Sanjay Soni)
+(Fee payable after consultation via Google Pay / PhonePe / Paytm / BHIM)
+---
 
 Please help me connect for the consultation.`;
 }

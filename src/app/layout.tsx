@@ -14,7 +14,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "VetTalk (24*7) | Talk to a Vet from Home",
   description:
-    "Online veterinary consultation for dogs and cats on WhatsApp starting at ₹100. Connect with licensed veterinarians 24*7.",
+    "Online veterinary consultation for dogs and cats on WhatsApp at Flat ₹200. Connect with licensed veterinarians 24*7.",
   keywords: [
     "VetTalk 24*7",
     "online vet consultation",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VetTalk (24*7) | Talk to a Vet from Home",
     description:
-      "Online veterinary consultation for dogs and cats on WhatsApp starting at ₹100. Connect with licensed veterinarians 24*7.",
+      "Online veterinary consultation for dogs and cats on WhatsApp at Flat ₹200. Connect with licensed veterinarians 24*7.",
     type: "website",
     locale: "en_IN",
     siteName: "VetTalk (24*7)",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VetTalk (24*7) | Online Veterinary Consultation",
     description:
-      "Online veterinary consultation for dogs and cats on WhatsApp starting at ₹100. Connect with licensed veterinarians 24*7.",
+      "Online veterinary consultation for dogs and cats on WhatsApp at Flat ₹200. Connect with licensed veterinarians 24*7.",
   },
 };
 

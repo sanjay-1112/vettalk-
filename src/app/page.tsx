@@ -52,9 +52,9 @@ export default function HomePage() {
             <section className="bg-gradient-to-b from-teal-50/90 via-teal-50/30 to-slate-50 pt-4 pb-2 px-4 sm:px-6">
               <div className="mx-auto max-w-4xl text-center">
                 {/* Value Pill */}
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-teal-100/90 px-3 py-1 text-xs font-semibold text-teal-900 border border-teal-200/80 shadow-2xs mb-2">
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-teal-100/90 px-3.5 py-1 text-xs font-semibold text-teal-900 border border-teal-200/80 shadow-2xs mb-2">
                   <Sparkles className="h-3.5 w-3.5 text-teal-600" />
-                  <span>Online Vet Consultation &middot; Just ₹100 via UPI</span>
+                  <span>Instant Online Vet Consult &middot; Flat ₹200 Only</span>
                 </div>
 
                 <h1 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl md:text-4xl leading-tight">

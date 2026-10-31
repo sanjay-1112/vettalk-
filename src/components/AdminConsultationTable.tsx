@@ -46,7 +46,7 @@ export function AdminConsultationTable({
   const [statusVal, setStatusVal] = useState<ConsultationStatus>("new");
   const [paymentVal, setPaymentVal] = useState<PaymentStatus>("pending");
   const [notesVal, setNotesVal] = useState<string>("");
-  const [amountVal, setAmountVal] = useState<number>(100);
+  const [amountVal, setAmountVal] = useState<number>(200);
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
 
@@ -55,7 +55,7 @@ export function AdminConsultationTable({
     setStatusVal(item.consultation_status);
     setPaymentVal(item.payment_status);
     setNotesVal(item.admin_notes || "");
-    setAmountVal(item.consultation_amount || 100);
+    setAmountVal(item.consultation_amount || 200);
     setSaveSuccess(false);
   };
 

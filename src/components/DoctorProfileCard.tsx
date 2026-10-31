@@ -166,19 +166,19 @@ export function DoctorProfileCard({ doctor = DEFAULT_DOCTOR }: DoctorProfileCard
             ))}
           </div>
 
-          {/* Direct WhatsApp Assurance & ₹100 Fee Strip */}
+          {/* Direct WhatsApp Assurance & Flat ₹200 Fee Strip */}
           <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-3 space-y-1.5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5 font-bold text-xs text-emerald-950">
                 <MessageCircle className="h-4 w-4 text-emerald-700" />
                 <span>Direct WhatsApp Consultation</span>
               </div>
-              <span className="font-mono text-xs font-black text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-200">
-                ₹100 Only
+              <span className="font-mono text-xs font-black text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-200 shadow-2xs">
+                Flat ₹200 Only
               </span>
             </div>
             <p className="text-[11px] leading-snug text-emerald-800">
-              You talk directly with {doctor.name}. No junior agents or AI bots. Pay ₹100 via UPI after intake.
+              You talk directly with {doctor.name}. No junior agents or AI bots. Pay Flat ₹200 via UPI after intake.
             </p>
           </div>
         </div>
