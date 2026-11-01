@@ -2,15 +2,23 @@
 
 import React from "react";
 import Link from "next/link";
-import { Stethoscope, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { ShieldCheck } from "lucide-react";
 
 export function Header() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-teal-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2.5 transition-opacity hover:opacity-90">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-600 text-white shadow-sm shadow-teal-500/20">
-            <Stethoscope className="h-5 w-5" />
+          <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-teal-500/25 shadow-xs bg-white">
+            <Image
+              src="/images/vettalk-logo.jpg"
+              alt="VetTalk (24*7) Logo"
+              width={88}
+              height={88}
+              priority
+              className="h-full w-full object-cover"
+            />
           </div>
           <div>
             <span className="text-lg font-bold tracking-tight text-slate-900 flex items-center gap-1.5">

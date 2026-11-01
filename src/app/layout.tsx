@@ -38,6 +38,11 @@ export const metadata: Metadata = {
     description:
       "Online veterinary consultation for dogs and cats on WhatsApp at Flat ₹200. Connect with licensed veterinarians 24*7.",
   },
+  icons: {
+    icon: "/images/vettalk-logo.jpg",
+    shortcut: "/images/vettalk-logo.jpg",
+    apple: "/images/vettalk-logo.jpg",
+  },
 };
 
 import { MetaPixel } from "@/components/MetaPixel";

@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { Stethoscope, Heart, Award } from "lucide-react";
+import Image from "next/image";
+import { Heart, Award } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,9 +11,15 @@ export function Footer() {
   return (
     <footer className="mt-auto border-t border-slate-200 bg-white py-10 px-4 sm:px-6">
       <div className="mx-auto max-w-xl text-center">
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-600 text-white">
-            <Stethoscope className="h-4 w-4" />
+        <div className="flex items-center justify-center gap-2.5 mb-2">
+          <div className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full ring-1 ring-teal-500/25 bg-white">
+            <Image
+              src="/images/vettalk-logo.jpg"
+              alt="VetTalk (24*7) Logo"
+              width={64}
+              height={64}
+              className="h-full w-full object-cover"
+            />
           </div>
           <span className="text-base font-bold text-slate-900">
             VetTalk <span className="text-teal-600 font-extrabold">(24*7)</span>

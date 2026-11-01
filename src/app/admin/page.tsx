@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Stethoscope,
   Lock,
@@ -210,9 +211,15 @@ export default function AdminPage() {
       <div className="min-h-screen flex flex-col justify-center bg-slate-50 py-12 px-4 sm:px-6">
         <div className="mx-auto w-full max-w-md">
           <div className="text-center mb-6">
-            <Link href="/" className="inline-flex items-center gap-2 mb-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-600 text-white shadow-sm">
-                <Stethoscope className="h-5 w-5" />
+            <Link href="/" className="inline-flex items-center gap-2.5 mb-2">
+              <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-teal-500/25 bg-white shadow-xs">
+                <Image
+                  src="/images/vettalk-logo.jpg"
+                  alt="VetTalk (24*7) Logo"
+                  width={88}
+                  height={88}
+                  className="h-full w-full object-cover"
+                />
               </div>
               <span className="text-xl font-bold text-slate-900">VetTalk (24*7)</span>
             </Link>
@@ -301,9 +308,15 @@ export default function AdminPage() {
       <header className="sticky top-0 z-30 border-b border-slate-200 bg-white">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
           <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal-600 text-white">
-                <Stethoscope className="h-5 w-5" />
+            <Link href="/" className="flex items-center gap-2.5">
+              <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full ring-2 ring-teal-500/25 bg-white">
+                <Image
+                  src="/images/vettalk-logo.jpg"
+                  alt="VetTalk (24*7) Logo"
+                  width={72}
+                  height={72}
+                  className="h-full w-full object-cover"
+                />
               </div>
               <span className="text-base font-bold text-slate-900 hidden sm:inline">
                 VetTalk (24*7)

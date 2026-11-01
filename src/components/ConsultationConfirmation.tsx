@@ -45,9 +45,16 @@ export function ConsultationConfirmation({
   return (
     <div className="mx-auto max-w-xl px-4 sm:px-6 py-6 sm:py-8">
       <div className="rounded-2xl border border-teal-200 bg-white p-5 sm:p-8 text-center shadow-lg shadow-teal-500/5">
-        {/* Success Icon */}
-        <div className="mx-auto flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-teal-50 text-teal-600 ring-8 ring-teal-50/50">
-          <CheckCircle2 className="h-8 w-8 sm:h-10 sm:w-10 text-teal-600" />
+        {/* Official VetTalk Brand Logo Badge */}
+        <div className="mx-auto relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full overflow-hidden ring-4 ring-teal-500/20 shadow-md bg-white mb-2">
+          <Image
+            src="/images/vettalk-logo.jpg"
+            alt="VetTalk (24*7) Official Logo"
+            width={120}
+            height={120}
+            priority
+            className="h-full w-full object-cover"
+          />
         </div>
 
         <span className="mt-3 inline-block rounded-full bg-emerald-100 px-3 py-0.5 text-xs font-bold text-emerald-800">
