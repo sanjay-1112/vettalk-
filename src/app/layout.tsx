@@ -12,6 +12,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://vettalk-vg5a.vercel.app"),
   title: "VetTalk (24*7) | Talk to a Vet from Home",
   description:
     "Online veterinary consultation for dogs and cats on WhatsApp at Flat ₹200. Connect with licensed veterinarians 24*7.",
@@ -28,15 +29,25 @@ export const metadata: Metadata = {
     title: "VetTalk (24*7) | Talk to a Vet from Home",
     description:
       "Online veterinary consultation for dogs and cats on WhatsApp at Flat ₹200. Connect with licensed veterinarians 24*7.",
+    url: "https://vettalk-vg5a.vercel.app",
     type: "website",
     locale: "en_IN",
     siteName: "VetTalk (24*7)",
+    images: [
+      {
+        url: "/images/vettalk-hero-banner.jpg",
+        width: 1024,
+        height: 535,
+        alt: "VetTalk (24*7) - Talk to a Licensed Vet from Home for Flat ₹200",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "VetTalk (24*7) | Online Veterinary Consultation",
     description:
       "Online veterinary consultation for dogs and cats on WhatsApp at Flat ₹200. Connect with licensed veterinarians 24*7.",
+    images: ["/images/vettalk-hero-banner.jpg"],
   },
   icons: {
     icon: "/images/vettalk-logo.jpg",
