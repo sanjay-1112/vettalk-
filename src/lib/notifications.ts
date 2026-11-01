@@ -34,6 +34,7 @@ export interface NotificationPayload {
   petAge?: string | null;
   mainConcern: string;
   problemDuration?: string;
+  preferredSlot?: string | null;
   photoUrl?: string | null;
 }
 
@@ -43,6 +44,7 @@ export interface NotificationPayload {
 export function buildTeamAlertMessage(payload: NotificationPayload): string {
   const ageDisplay = payload.petAge ? payload.petAge : "Not specified";
   const cityDisplay = payload.city ? payload.city : "Not specified";
+  const slotLine = payload.preferredSlot ? `*Preferred Slot:* ${payload.preferredSlot}\n` : "";
 
   return `🚨 *NEW VETTALK CASE LOGGED*
 
@@ -53,8 +55,7 @@ export function buildTeamAlertMessage(payload: NotificationPayload): string {
 
 *Pet:* ${payload.petName} (${payload.petType})
 *Age:* ${ageDisplay}
-${payload.breed ? `*Breed:* ${payload.breed}\n` : ""}
-*Concern:*
+${payload.breed ? `*Breed:* ${payload.breed}\n` : ""}${slotLine}*Concern:*
 ${payload.mainConcern.trim()}
 
 *Fee:* Flat ₹200 (UPI: sanjay1112198@okicici)
@@ -87,7 +88,7 @@ export async function dispatchBackendConsultationNotification(
 
   // 1. Log to server console for monitoring
   console.log(
-    `[TEAM ALERT] New consultation #${payload.referenceId} submitted by ${payload.ownerName} (+91 ${payload.ownerPhone}).`
+    `[TEAM ALERT] New consultation #${payload.referenceId} submitted by ${payload.ownerName} (+91 ${payload.ownerPhone}). Slot: ${payload.preferredSlot || "Not specified"}`
   );
   console.log(
     `[TEAM ALERT] Backup notification targets: ${BACKUP_TEAM_NUMBERS.map(
@@ -111,6 +112,7 @@ export async function dispatchBackendConsultationNotification(
           pet_name: payload.petName,
           pet_type: payload.petType,
           main_concern: payload.mainConcern,
+          preferred_slot: payload.preferredSlot,
           consultation_fee: 200,
           upi_id: "sanjay1112198@okicici",
           primary_doctor_phone: PRIMARY_WHATSAPP_PHONE,
@@ -129,7 +131,6 @@ export async function dispatchBackendConsultationNotification(
   }
 
   // 3. Optional: CallMeBot automated WhatsApp message service if API keys are set
-  // To get a free key: Send "I allow callmebot to send me messages" on WhatsApp to +34 644 44 20 62
   const callmebotKey1 = process.env.CALLMEBOT_API_KEY_1;
   const callmebotKey2 = process.env.CALLMEBOT_API_KEY_2;
 

@@ -178,9 +178,16 @@ export function AdminConsultationTable({
                     <p className="truncate text-slate-800" title={item.main_concern}>
                       {item.main_concern}
                     </p>
-                    <p className="text-[10px] text-slate-400 mt-0.5">
-                      Duration: {item.problem_duration}
-                    </p>
+                    <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                      <span className="text-[10px] text-slate-400">
+                        Duration: {item.problem_duration}
+                      </span>
+                      {item.preferred_slot ? (
+                        <span className="inline-flex items-center text-[10px] font-semibold text-teal-800 bg-teal-50 px-1.5 py-0.5 rounded border border-teal-200">
+                          {item.preferred_slot}
+                        </span>
+                      ) : null}
+                    </div>
                   </td>
 
                   <td className="py-3.5 px-4 whitespace-nowrap">
@@ -385,14 +392,19 @@ export function AdminConsultationTable({
 
               {/* Main Concern & Duration */}
               <div className="rounded-xl border border-slate-200 bg-white p-4">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <div className="flex items-center gap-1.5 text-xs font-bold uppercase text-slate-500">
                     <FileText className="h-3.5 w-3.5 text-teal-600" />
                     <span>Main Concern</span>
                   </div>
-                  <span className="rounded-md bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-800 border border-amber-200">
-                    Started: {selectedItem.problem_duration}
-                  </span>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="rounded-md bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-800 border border-amber-200">
+                      Started: {selectedItem.problem_duration}
+                    </span>
+                    <span className="rounded-md bg-teal-50 px-2 py-0.5 text-[11px] font-bold text-teal-800 border border-teal-200">
+                      Slot: {selectedItem.preferred_slot || "Right Now (Within 5-10 mins)"}
+                    </span>
+                  </div>
                 </div>
                 <p className="text-sm text-slate-800 leading-relaxed whitespace-pre-wrap">
                   {selectedItem.main_concern}

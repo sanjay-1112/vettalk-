@@ -10,12 +10,14 @@ export interface WhatsAppMessagePayload {
   petName: string;
   petType: string;
   petAge?: string;
+  preferredSlot?: string;
   mainConcern: string;
 }
 
 export function buildWhatsAppMessage(payload: WhatsAppMessagePayload): string {
   const ageDisplay = payload.petAge ? payload.petAge : "Not specified";
   const phoneLine = payload.ownerPhone ? `Phone: +91 ${payload.ownerPhone}\n` : "";
+  const slotLine = payload.preferredSlot ? `Preferred Time: ${payload.preferredSlot}\n` : "";
 
   return `Hello Dr. R. Soni,
 
@@ -27,7 +29,7 @@ Owner: ${payload.ownerName}
 ${phoneLine}Pet: ${payload.petName}
 Pet Type: ${payload.petType}
 Age: ${ageDisplay}
-
+${slotLine}
 Concern:
 ${payload.mainConcern.trim()}
 

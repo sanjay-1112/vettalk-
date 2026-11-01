@@ -13,6 +13,7 @@ import {
   Loader2,
   X,
   FileImage,
+  ShieldCheck,
 } from "lucide-react";
 import {
   ConsultationFormData,
@@ -31,6 +32,7 @@ interface ConsultationFormProps {
     petName: string;
     petType: string;
     petAge?: string;
+    preferredSlot?: string;
     mainConcern: string;
   }) => void;
 }
@@ -50,6 +52,7 @@ export function ConsultationForm({
     pet_gender: "Male",
     main_concern: initialConcern,
     problem_duration: "Today",
+    preferred_slot: "Right Now (Within 5-10 mins)",
     disclaimer_accepted: false,
     utm_source: "",
     utm_medium: "",
@@ -62,6 +65,22 @@ export function ConsultationForm({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [selectedSlotKey, setSelectedSlotKey] = useState<"now" | "1hr" | "evening" | "custom">("now");
+  const [customSlot, setCustomSlot] = useState("");
+
+  const handleSelectSlot = (key: "now" | "1hr" | "evening" | "custom", value: string) => {
+    setSelectedSlotKey(key);
+    setFormData((prev) => ({ ...prev, preferred_slot: value }));
+  };
+
+  const handleCustomSlotChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setCustomSlot(val);
+    setFormData((prev) => ({
+      ...prev,
+      preferred_slot: val.trim() ? `Custom: ${val.trim()}` : "Custom Slot",
+    }));
+  };
 
   // Capture UTM parameters and concern pre-fill from URL on mount
   useEffect(() => {
@@ -209,6 +228,7 @@ export function ConsultationForm({
         petName: formData.pet_name,
         petType: formData.pet_type,
         petAge: formData.pet_age,
+        preferredSlot: formData.preferred_slot,
         mainConcern: formData.main_concern,
       });
     } catch (err: unknown) {
@@ -595,6 +615,139 @@ export function ConsultationForm({
                   <p className="mt-1 text-[11px] font-medium text-rose-600">{errors.file}</p>
                 )}
               </div>
+            </div>
+          </div>
+
+          {/* SECTION 3: PREFERRED CONSULTATION TIME SLOT */}
+          <div className="pt-2 border-t border-slate-100">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-teal-800 flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5 text-teal-600" />
+                <span>3. Preferred Consultation Time</span>
+              </span>
+              <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700 border border-emerald-200">
+                Dr. On-Call 24*7
+              </span>
+            </div>
+
+            <p className="text-xs text-slate-500 mb-3">
+              Select when you want Dr. R. Soni to connect with you on WhatsApp:
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {/* Option 1: Right Now */}
+              <button
+                type="button"
+                onClick={() => handleSelectSlot("now", "Right Now (Within 5-10 mins)")}
+                className={`flex flex-col text-left p-3 rounded-xl border transition-all ${
+                  selectedSlotKey === "now"
+                    ? "border-emerald-500 bg-emerald-50/70 ring-1 ring-emerald-500 shadow-xs"
+                    : "border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-slate-300"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                    Right Now (5-10 mins)
+                  </span>
+                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded">
+                    ⚡ Urgent Triage
+                  </span>
+                </div>
+                <span className="text-[11px] text-slate-500 mt-1">
+                  Doctor is alerted immediately on WhatsApp.
+                </span>
+              </button>
+
+              {/* Option 2: In 1 Hour */}
+              <button
+                type="button"
+                onClick={() => handleSelectSlot("1hr", "In 1 Hour")}
+                className={`flex flex-col text-left p-3 rounded-xl border transition-all ${
+                  selectedSlotKey === "1hr"
+                    ? "border-teal-500 bg-teal-50/70 ring-1 ring-teal-500 shadow-xs"
+                    : "border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-slate-300"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-900">
+                    In 1 Hour
+                  </span>
+                  <span className="text-[10px] font-semibold text-teal-700 bg-teal-100/60 px-2 py-0.5 rounded">
+                    Flexible
+                  </span>
+                </div>
+                <span className="text-[11px] text-slate-500 mt-1">
+                  Doctor prepares case file &amp; connects within 1 hr.
+                </span>
+              </button>
+
+              {/* Option 3: Today Evening */}
+              <button
+                type="button"
+                onClick={() => handleSelectSlot("evening", "Today Evening (6:00 PM - 9:00 PM)")}
+                className={`flex flex-col text-left p-3 rounded-xl border transition-all ${
+                  selectedSlotKey === "evening"
+                    ? "border-teal-500 bg-teal-50/70 ring-1 ring-teal-500 shadow-xs"
+                    : "border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-slate-300"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-900">
+                    Evening (6 PM - 9 PM)
+                  </span>
+                  <span className="text-[10px] font-semibold text-purple-700 bg-purple-100/60 px-2 py-0.5 rounded">
+                    Post-Work
+                  </span>
+                </div>
+                <span className="text-[11px] text-slate-500 mt-1">
+                  Convenient evening discussion with the vet.
+                </span>
+              </button>
+
+              {/* Option 4: Custom / Late Night */}
+              <button
+                type="button"
+                onClick={() => handleSelectSlot("custom", customSlot || "Custom / Late Night Slot")}
+                className={`flex flex-col text-left p-3 rounded-xl border transition-all ${
+                  selectedSlotKey === "custom"
+                    ? "border-teal-500 bg-teal-50/70 ring-1 ring-teal-500 shadow-xs"
+                    : "border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-slate-300"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-900">
+                    Custom / Late Night
+                  </span>
+                  <span className="text-[10px] font-semibold text-slate-600 bg-slate-200/70 px-2 py-0.5 rounded">
+                    Specify Time
+                  </span>
+                </div>
+                <span className="text-[11px] text-slate-500 mt-1">
+                  Type your specific preferred time slot below.
+                </span>
+              </button>
+            </div>
+
+            {/* Custom Slot Text Input */}
+            {selectedSlotKey === "custom" && (
+              <div className="mt-2.5">
+                <input
+                  type="text"
+                  placeholder="e.g. Tonight after 11:30 PM, or Tomorrow morning 10 AM"
+                  value={customSlot}
+                  onChange={handleCustomSlotChange}
+                  className="w-full rounded-xl border border-teal-300 bg-white px-3.5 py-2 text-xs text-slate-800 placeholder:text-slate-400 outline-none focus:ring-1 focus:ring-teal-500"
+                />
+              </div>
+            )}
+
+            {/* Privacy & Anti-Spam Safety Note */}
+            <div className="mt-3 flex items-start gap-2 rounded-xl bg-slate-50 p-2.5 text-[11px] text-slate-500 border border-slate-200/70">
+              <ShieldCheck className="h-3.5 w-3.5 text-teal-600 shrink-0 mt-0.5" />
+              <span>
+                <strong>Zero Unnecessary Calls:</strong> We respect your time and only message/call at your chosen slot. For sudden critical trauma or bleeding, keep <em>&ldquo;Right Now&rdquo;</em> selected.
+              </span>
             </div>
           </div>
 

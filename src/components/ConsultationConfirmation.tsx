@@ -105,6 +105,13 @@ export function ConsultationConfirmation({
             </span>
           </div>
 
+          <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
+            <span className="text-xs text-slate-500 font-medium">Preferred Time:</span>
+            <span className="text-xs font-bold text-teal-800 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
+              {data.preferredSlot || "Right Now (Within 5-10 mins)"}
+            </span>
+          </div>
+
           <div className="flex items-center justify-between pt-1">
             <span className="text-xs text-slate-500 font-medium">Consultation Fee:</span>
             <span className="text-sm sm:text-base font-extrabold text-emerald-600">

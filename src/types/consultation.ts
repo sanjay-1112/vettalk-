@@ -35,6 +35,7 @@ export interface ConsultationRequest {
   payment_status: PaymentStatus;
   consultation_amount: number;
   admin_notes?: string | null;
+  preferred_slot?: string | null;
   utm_source?: string | null;
   utm_medium?: string | null;
   utm_campaign?: string | null;
@@ -55,6 +56,7 @@ export interface ConsultationFormData {
   // Medical
   main_concern: string;
   problem_duration: ProblemDuration;
+  preferred_slot: string;
   photo_url?: string;
   // Safety
   disclaimer_accepted: boolean;

@@ -31,6 +31,8 @@ export async function POST(req: NextRequest) {
     const main_concern = (formData.get("main_concern") as string)?.trim();
     const problem_duration =
       (formData.get("problem_duration") as ProblemDuration) || "Today";
+    const preferred_slot =
+      (formData.get("preferred_slot") as string)?.trim() || "Right Now (Within 5-10 mins)";
     const disclaimer_accepted = formData.get("disclaimer_accepted") === "true";
 
     const utm_source = (formData.get("utm_source") as string)?.trim() || null;
@@ -144,6 +146,7 @@ export async function POST(req: NextRequest) {
       pet_gender,
       main_concern,
       problem_duration,
+      preferred_slot,
       photo_url,
       consultation_status: "new",
       payment_status: "pending",
@@ -211,6 +214,7 @@ export async function POST(req: NextRequest) {
       petAge: record.pet_age,
       mainConcern: record.main_concern,
       problemDuration: record.problem_duration,
+      preferredSlot: record.preferred_slot,
       photoUrl: record.photo_url,
     }).catch((err) => {
       console.warn("Backend notification dispatch warning:", err);
