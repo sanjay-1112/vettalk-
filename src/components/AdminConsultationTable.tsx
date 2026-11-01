@@ -459,6 +459,8 @@ export function AdminConsultationTable({
                       breed: selectedItem.breed,
                       petAge: selectedItem.pet_age,
                       mainConcern: selectedItem.main_concern,
+                      preferredSlot: selectedItem.preferred_slot,
+                      photoUrl: selectedItem.photo_url,
                     })}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -479,6 +481,8 @@ export function AdminConsultationTable({
                       breed: selectedItem.breed,
                       petAge: selectedItem.pet_age,
                       mainConcern: selectedItem.main_concern,
+                      preferredSlot: selectedItem.preferred_slot,
+                      photoUrl: selectedItem.photo_url,
                     })}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -499,6 +503,8 @@ export function AdminConsultationTable({
                       breed: selectedItem.breed,
                       petAge: selectedItem.pet_age,
                       mainConcern: selectedItem.main_concern,
+                      preferredSlot: selectedItem.preferred_slot,
+                      photoUrl: selectedItem.photo_url,
                     })}
                     target="_blank"
                     rel="noopener noreferrer"

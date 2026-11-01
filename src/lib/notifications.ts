@@ -45,6 +45,7 @@ export function buildTeamAlertMessage(payload: NotificationPayload): string {
   const ageDisplay = payload.petAge ? payload.petAge : "Not specified";
   const cityDisplay = payload.city ? payload.city : "Not specified";
   const slotLine = payload.preferredSlot ? `*Preferred Slot:* ${payload.preferredSlot}\n` : "";
+  const photoLine = payload.photoUrl ? `\n📸 *Attached Pet Photo:*\n${payload.photoUrl}\n` : "";
 
   return `🚨 *NEW VETTALK CASE LOGGED*
 
@@ -57,7 +58,7 @@ export function buildTeamAlertMessage(payload: NotificationPayload): string {
 *Age:* ${ageDisplay}
 ${payload.breed ? `*Breed:* ${payload.breed}\n` : ""}${slotLine}*Concern:*
 ${payload.mainConcern.trim()}
-
+${photoLine}
 *Fee:* Flat ₹200 (UPI: sanjay1112198@okicici)
 *Primary Vet on Call:* Dr. R. Soni (918919468165)
 

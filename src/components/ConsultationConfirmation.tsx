@@ -112,6 +112,21 @@ export function ConsultationConfirmation({
             </span>
           </div>
 
+          {data.photoUrl && (
+            <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
+              <span className="text-xs text-slate-500 font-medium">Uploaded Photo:</span>
+              <a
+                href={data.photoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs font-bold text-teal-700 hover:text-teal-900 bg-teal-50 px-2 py-0.5 rounded border border-teal-200 hover:bg-teal-100 transition-colors"
+              >
+                <span>View Pet Photo</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </div>
+          )}
+
           <div className="flex items-center justify-between pt-1">
             <span className="text-xs text-slate-500 font-medium">Consultation Fee:</span>
             <span className="text-sm sm:text-base font-extrabold text-emerald-600">

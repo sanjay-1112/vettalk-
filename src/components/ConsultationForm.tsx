@@ -21,20 +21,12 @@ import {
   PetGender,
   ProblemDuration,
 } from "@/types/consultation";
+import { WhatsAppMessagePayload } from "@/lib/whatsapp";
 import { trackMetaLead } from "@/components/MetaPixel";
 
 interface ConsultationFormProps {
   initialConcern?: string;
-  onSuccess: (data: {
-    referenceId: string;
-    ownerName: string;
-    ownerPhone?: string;
-    petName: string;
-    petType: string;
-    petAge?: string;
-    preferredSlot?: string;
-    mainConcern: string;
-  }) => void;
+  onSuccess: (data: WhatsAppMessagePayload) => void;
 }
 
 export function ConsultationForm({
@@ -230,6 +222,7 @@ export function ConsultationForm({
         petAge: formData.pet_age,
         preferredSlot: formData.preferred_slot,
         mainConcern: formData.main_concern,
+        photoUrl: result.data.photo_url || null,
       });
     } catch (err: unknown) {
       const errorMsg =

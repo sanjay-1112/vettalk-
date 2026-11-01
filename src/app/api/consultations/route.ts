@@ -180,7 +180,11 @@ export async function POST(req: NextRequest) {
             consultation_status: record.consultation_status,
             payment_status: record.payment_status,
             consultation_amount: record.consultation_amount,
-            admin_notes: record.admin_notes,
+            admin_notes:
+              record.admin_notes ||
+              (record.preferred_slot
+                ? `Preferred Slot: ${record.preferred_slot}`
+                : null),
             utm_source: record.utm_source,
             utm_medium: record.utm_medium,
             utm_campaign: record.utm_campaign,
@@ -225,6 +229,7 @@ export async function POST(req: NextRequest) {
       data: {
         id: record.id,
         reference_id: record.reference_id,
+        photo_url: record.photo_url,
       },
     });
   } catch (error: unknown) {

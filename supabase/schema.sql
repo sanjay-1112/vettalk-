@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS public.consultation_requests (
     problem_duration VARCHAR(50) NOT NULL CHECK (
         problem_duration IN ('Today', 'Yesterday', '2-3 days ago', 'More than 3 days ago', 'Not sure')
     ),
+    preferred_slot VARCHAR(100),
     photo_url TEXT,
 
     -- Lifecycle & Triage Status

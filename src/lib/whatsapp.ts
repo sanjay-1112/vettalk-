@@ -12,12 +12,14 @@ export interface WhatsAppMessagePayload {
   petAge?: string;
   preferredSlot?: string;
   mainConcern: string;
+  photoUrl?: string | null;
 }
 
 export function buildWhatsAppMessage(payload: WhatsAppMessagePayload): string {
   const ageDisplay = payload.petAge ? payload.petAge : "Not specified";
   const phoneLine = payload.ownerPhone ? `Phone: +91 ${payload.ownerPhone}\n` : "";
   const slotLine = payload.preferredSlot ? `Preferred Time: ${payload.preferredSlot}\n` : "";
+  const photoLine = payload.photoUrl ? `\n📸 Attached Pet Photo:\n${payload.photoUrl}\n` : "";
 
   return `Hello Dr. R. Soni,
 
@@ -32,7 +34,7 @@ Age: ${ageDisplay}
 ${slotLine}
 Concern:
 ${payload.mainConcern.trim()}
-
+${photoLine}
 ---
 💳 Consultation Fee: Flat ₹200 Only
 📲 UPI ID: sanjay1112198@okicici (Sanjay Soni)
