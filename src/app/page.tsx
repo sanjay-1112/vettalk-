@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { Header } from "@/components/Header";
 import { DoctorProfileCard } from "@/components/DoctorProfileCard";
 import { ConsultationForm } from "@/components/ConsultationForm";
@@ -76,6 +77,38 @@ export default function HomePage() {
                   <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-0.5 border border-slate-200/80 shadow-2xs">
                     <Clock className="h-3 w-3 text-teal-600" /> 1-Min Quick Intake
                   </span>
+                </div>
+
+                {/* Clickable Hero Graphic Banner */}
+                <div className="mt-5 mx-auto max-w-3xl">
+                  <a
+                    href="#consult-form"
+                    className="group relative block aspect-[1024/535] w-full overflow-hidden rounded-2xl border-2 border-emerald-300 shadow-xl shadow-emerald-500/10 hover:shadow-emerald-500/20 transition-all cursor-pointer bg-white"
+                    title="Click to consult a licensed vet now for Flat ₹200"
+                  >
+                    <Image
+                      src="/images/vettalk-hero-banner.jpg"
+                      alt="Talk to a Licensed Vet from Home - Flat ₹200 Only"
+                      fill
+                      priority
+                      className="object-cover group-hover:scale-[1.01] transition-transform duration-300"
+                    />
+                    {/* Hotspot over the red Consult Now button */}
+                    <div
+                      style={{
+                        left: "49.5%",
+                        top: "67%",
+                        width: "48%",
+                        height: "18%",
+                      }}
+                      className="absolute z-10 rounded-full border-2 border-white/70 shadow-lg shadow-rose-600/50 group-hover:border-white transition-all overflow-hidden"
+                    >
+                      <span className="absolute inset-0 rounded-full bg-white/20 animate-ping opacity-30" />
+                    </div>
+                  </a>
+                  <p className="mt-1.5 text-center text-[11px] font-medium text-slate-500">
+                    👆 Tap the <strong className="text-rose-600">CONSULT NOW</strong> button above to connect on WhatsApp in 5–10 mins &middot; Flat ₹200
+                  </p>
                 </div>
               </div>
             </section>

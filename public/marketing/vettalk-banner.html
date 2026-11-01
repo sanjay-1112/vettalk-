@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VetTalk (24*7) — Talk to a Licensed Vet from Home</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 16px;
+    }
+    .banner-card {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(13, 148, 136, 0.25);
+      border: 2px solid #a7f3d0;
+      background: #fff;
+    }
+    .banner-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    /* Full banner link */
+    .banner-link {
+      display: block;
+      position: relative;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    /* Hotspot over the red Consult Now button (coordinates: left: 49.5%, top: 67%, width: 48%, height: 18%) */
+    .consult-hotspot {
+      position: absolute;
+      left: 49.5%;
+      top: 67%;
+      width: 48%;
+      height: 18%;
+      border-radius: 9999px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 20px rgba(225, 29, 72, 0.6);
+      transition: all 0.2s ease;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .consult-hotspot:hover {
+      border-color: #ffffff;
+      transform: scale(1.02);
+      box-shadow: 0 0 25px rgba(225, 29, 72, 0.9);
+    }
+    .pulse {
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.25);
+      animation: pulseAnim 2s infinite;
+    }
+    @keyframes pulseAnim {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 0.2; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .caption {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #64748b;
+      text-align: center;
+    }
+    .caption a {
+      color: #0d9488;
+      font-weight: 700;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner-card">
+    <a href="https://vettalk-vg5a.vercel.app/?utm_source=banner&utm_medium=click&utm_campaign=consult_now" class="banner-link" target="_blank" rel="noopener noreferrer" title="Click to talk to a licensed vet from home for Flat ₹200">
+      <img src="/images/vettalk-hero-banner.jpg" alt="VetTalk (24*7) - Talk to a Licensed Vet from Home (Flat ₹200 Only)">
+      
+      <!-- Interactive Hotspot over red CONSULT NOW button -->
+      <div class="consult-hotspot">
+        <div class="pulse"></div>
+      </div>
+    </a>
+  </div>
+
+  <p class="caption">
+    👆 Tap anywhere on the banner or click <a href="https://vettalk-vg5a.vercel.app/?utm_source=banner&utm_medium=click&utm_campaign=consult_now" target="_blank">CONSULT NOW</a> to connect with Dr. R. Soni on WhatsApp in 5–10 mins &middot; Flat ₹200 Only
+  </p>
+
+</body>
+</html>
